@@ -14,15 +14,16 @@ router.get("/", async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `I need 5 different instagram captions with the following information in mind
+      prompt: `I'm a social media marketer and I need your help creating Instagram captions for my client.
+         I need 5 unique instagram captions with the following information in mind.
          The product is a: ${req.query.product}
          The description of the product is: ${req.query.description}
          The tone of the captions should be: ${req.query.tone}
         `,
-      temperature: 0,
+      temperature: 0.5,
       max_tokens: 256,
     });
-    console.log(req.query)
+    console.log(response.data);
     res.status(200).json(response.data);
   } catch (error) {
     console.log(error);
