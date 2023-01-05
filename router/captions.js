@@ -31,4 +31,24 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/generic", async (req, res) => {
+  const openai = new OpenAIApi(configuration);
+
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `I'm a social media marketer and I need your help creating Instagram captions for my client.
+         I need 5 different generic captions regarding: ${req.query.description}
+         Please don't make the captions too short
+        `,
+      temperature: 0.5,
+      max_tokens: 256,
+    });
+    console.log(response.data);
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
