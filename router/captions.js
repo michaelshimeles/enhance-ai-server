@@ -41,7 +41,7 @@ router.get("/generic", async (req, res) => {
          I need 5 different generic captions regarding: ${req.query.description}
          Please don't make the captions too short
         `,
-      temperature: 0.5,
+      temperature: 1,
       max_tokens: 256,
     });
     console.log(response.data);
