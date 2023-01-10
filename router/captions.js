@@ -15,13 +15,10 @@ router.get("/", async (req, res) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `I'm a social media marketer and I need your help creating Instagram captions for my client.
-         I need 5 unique instagram captions with the following information in mind.
-         No need to add any hashtags.
-         The product is a: ${req.query.product}
-         The description of the product is: ${req.query.description}
-         The tone of the captions should be: ${req.query.tone}
+         I need 5 different captions regarding: ${req.query.description}
+         Please don't make the captions too short
         `,
-      temperature: 0.5,
+      temperature: 1,
       max_tokens: 256,
     });
     res.status(200).json(response.data);
@@ -36,10 +33,8 @@ router.get("/generic", async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `I'm a social media marketer and I need your help creating Instagram captions for my client.
-         I need 5 different generic captions regarding: ${req.query.description}
-         Please don't make the captions too short
-        `,
+      prompt: `You are a social media manager at the top Marketing Agency. You create ${req.query.platform} captions. 
+         I need you to create a 5 different captions with a ${req.query.tone} tone keeping the following information in mind: ${req.query.description}.`,
       temperature: 1,
       max_tokens: 256,
     });
@@ -48,5 +43,6 @@ router.get("/generic", async (req, res) => {
     console.log(error);
   }
 });
+
 
 module.exports = router;

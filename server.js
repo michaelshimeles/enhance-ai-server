@@ -8,7 +8,6 @@ const PORT = process.env.PORT;
 // Routers
 const grammarRouter = require("./router/grammar");
 const captionsRouter = require("./router/captions");
-const genericCaptionRouter = require("./router/generic");
 
 // app.use(function (req, res, next) {
 
@@ -37,7 +36,6 @@ app.get("/", (_req, res) => {
 
 app.use("/prompt", grammarRouter);
 app.use("/captions", captionsRouter);
-app.use("/generic", genericCaptionRouter);
 
 app.listen(PORT, (_req, _res) => {
   console.log("Server is live");
