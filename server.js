@@ -10,11 +10,18 @@ const grammarRouter = require("./router/grammar");
 const captionsRouter = require("./router/captions");
 const genericCaptionRouter = require("./router/generic");
 
-app.use(
-  cors({
-    origin: ["https://enhanceai.me/", "http://localhost:3000/"],
-  })
-);
+app.use(function (_req, res, next) {
+  res.header("Access-Control-Allow-Origin", [
+    "http://localhost:3000/",
+    "https://enhanceai.me/",
+  ]);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(express.json());
 
 app.get("/", (_req, res) => {
