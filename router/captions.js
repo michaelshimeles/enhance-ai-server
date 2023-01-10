@@ -24,7 +24,6 @@ router.get("/", async (req, res) => {
       temperature: 0.5,
       max_tokens: 256,
     });
-    console.log(response.data);
     res.status(200).json(response.data);
   } catch (error) {
     console.log(error);
@@ -44,7 +43,6 @@ router.get("/generic", async (req, res) => {
       temperature: 1,
       max_tokens: 256,
     });
-    console.log(response.data);
     res.status(200).json(response.data);
   } catch (error) {
     console.log(error);
