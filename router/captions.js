@@ -51,7 +51,7 @@ router.get("/hashtags", async (req, res) => {
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `I need you to generate 10 instagram hashtags for a post I'm creating. My post is in regards to the ${req.query.niche} niche`,
+      prompt: `I need you to generate 30 instagram hashtags for a post I'm creating. My post is in regards to the ${req.query.niche} niche`,
       temperature: 0,
       max_tokens: 256,
     });
