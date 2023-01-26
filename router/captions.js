@@ -47,7 +47,6 @@ router.get("/generic", async (req, res) => {
 router.get("/hashtags", async (req, res) => {
   const openai = new OpenAIApi(configuration);
 
-  console.log(req.query)
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
