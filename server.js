@@ -11,12 +11,7 @@ const captionsRouter = require("./router/captions");
 const resumeRouter = require("./router/resume");
 const emailValidityRouter = require("./router/emailValidity");
 
-app.use(
-  cors({
-    origin: "*",
-    "Access-Control-Allow-Origin": "*",
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (_req, res) => {
