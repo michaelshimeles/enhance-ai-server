@@ -8,10 +8,15 @@ const PORT = process.env.PORT;
 // Routers
 const grammarRouter = require("./router/grammar");
 const captionsRouter = require("./router/captions");
-const resumeRouter = require("./router/resume")
-const emailValidityRouter = require("./router/emailValidity")
+const resumeRouter = require("./router/resume");
+const emailValidityRouter = require("./router/emailValidity");
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    "Access-Control-Allow-Origin": "*",
+  })
+);
 app.use(express.json());
 
 app.get("/", (_req, res) => {
@@ -20,8 +25,8 @@ app.get("/", (_req, res) => {
 
 app.use("/prompt", grammarRouter);
 app.use("/captions", captionsRouter);
-app.use('/resume', resumeRouter)
-app.use('/email-validity', emailValidityRouter)
+app.use("/resume", resumeRouter);
+app.use("/email-validity", emailValidityRouter);
 
 app.listen(PORT, (_req, _res) => {
   console.log("Server is live");
